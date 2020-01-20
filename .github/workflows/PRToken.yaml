@@ -1,7 +1,5 @@
 name: Warning maintainers
-on:
-  pull_request:
-    paths: examples/**
+on: [pull_request]
 jobs:
   job:
     runs-on: ubuntu-latest
