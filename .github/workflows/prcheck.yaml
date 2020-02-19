@@ -4,9 +4,9 @@ jobs:
   prcheck:
     runs-on: [ubuntu-latest]
     steps:
-      - name: echo actor
+      - name: echo headlabel
         run: |
-          echo github.actor
+          echo ${{ github.event.pull_request.head.label }}
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
