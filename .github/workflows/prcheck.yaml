@@ -2,7 +2,8 @@ name: prcheck
 on: [pull_request]
 jobs:
   prcheck:
-    if: startsWith(github.event.pull_request.head.label, 'weide-zhou:')
+    if: startsWith(github.actor, 'weide-zhou')
+ #   if: startsWith(github.event.pull_request.head.label, 'weide-zhou:')
     runs-on: [ubuntu-latest]
     steps:
       - name: echo headlabel
