@@ -2,8 +2,6 @@ name: prcheck
 on: [pull_request]
 jobs:
   prcheck:
-    if: startsWith(github.actor, 'weide-zhou')
- #   if: startsWith(github.event.pull_request.head.label, 'weide-zhou:')
     runs-on: [ubuntu-latest]
     steps:
       - name: echo headlabel
@@ -13,3 +11,13 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: check fork secrets
+        run: |
+          echo $FORK
+        env:
+          FORK: ${{ secrets.fork }}
+      - name: check parent secrets
+        run: |
+          echo $PARENT
+        env:
+          PARENT: ${{ secrets.parent }}
