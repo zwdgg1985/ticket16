@@ -6,9 +6,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          clean: false
+#        with:
+#          persist-credentials: false
+#          clean: false
       - name: touch file
         run: |
           touch filetest1.txt
