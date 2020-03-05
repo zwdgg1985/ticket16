@@ -4,18 +4,6 @@ jobs:
   prcheck:
     runs-on: [ubuntu-latest]
     steps:
-      - name: checkout 2nd
-        uses: actions/checkout@v2
-        with:
-          repository: weide-zhou/ticket19
-          token: ${{ secrets.PARENT }}
-          path: ticket19
-          persist-credentials: false
-      - name: checkout 1st
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          clean: false
       - name: touch file
         run: |
           touch filetest1.txt
