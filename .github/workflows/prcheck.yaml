@@ -21,4 +21,4 @@ jobs:
       - name: Push newly trained model
         uses: ad-m/github-push-action@v0.5.0
         with:
-          github_token: ${{ secrets.fork }}
+          github_token: ${{ secrets.PARENT }}
