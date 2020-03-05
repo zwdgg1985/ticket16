@@ -4,6 +4,8 @@ jobs:
   prcheck:
     runs-on: [ubuntu-latest]
     steps:
+      - name: checkout
+        uses: actions/checkout@v2
       - name: touch file
         run: |
           touch filetest1.txt
