@@ -4,12 +4,22 @@ jobs:
   prcheck:
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: checkout 1st
+        uses: actions/checkout@v2
         with:
-          node-version: '10.x'
-          registry-url: 'https://npm.pkg.github.com'
-      - run: npm install
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PARENT }}
+          persist-credentials: false
+          clean: false
+      - name: touch file
+        run: |
+          touch filetest1.txt
+      - name: Commit newly trained model
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Github Action"
+          git add .
+          git commit -m "Model retraining" -a
+      - name: Push newly trained model
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          branch: B1
+          github_token: ${{ secrets.PARENT }}
