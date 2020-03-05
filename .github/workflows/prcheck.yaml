@@ -4,6 +4,9 @@ jobs:
   prcheck:
     runs-on: [ubuntu-latest]
     steps:
-      - name: test tokem
-        run: |
-          echo ${{ secrets.fork }}
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.fork }}
